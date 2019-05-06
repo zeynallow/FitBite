@@ -25,10 +25,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse">
               <ul class="nav navbar-nav text-right pull-right" style="top: 10px;position: relative;">
-                <li class="active"><a href="about-us.html">About Us</a></li>
-                <li><a href="sample-menu.html">How it works</a></li>
-                <li><a href="pricing.html">Pricing & Plans</a></li>
-                <li><a href="faq.html">FAQ's</a></li>
+                <li class="active"><a href="/page/about-us">About Us</a></li>
+                <li><a href="/page/how-it-works">How it works</a></li>
+                <li><a href="/meal-plans">Pricing & Plans</a></li>
+                <li><a href="/page/faqs">FAQ's</a></li>
                 <li><a href="/blogs">Blog</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->

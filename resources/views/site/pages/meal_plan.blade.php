@@ -34,7 +34,7 @@
 
             @foreach ($getMealPlans as $key => $plan)
             <!--plan start-->
-              <div role="tabpanel" class="tab-pane fade in active" id="plan_{{$plan->id}}">
+              <div role="tabpanel" class="tab-pane fade {{($key == 0) ? 'in active' : ''}}" id="plan_{{$plan->id}}">
                 <div class="row">
                   <div class="col-md-9">
                     <!-- == food listing group starts == -->

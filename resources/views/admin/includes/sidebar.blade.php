@@ -19,6 +19,19 @@
 
 
       <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePlans" aria-expanded="true" aria-controls="collapsePlans">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Meal Plans</span>
+        </a>
+        <div id="collapsePlans" class="collapse" aria-labelledby="headingPlans" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/admin/meal-plan/add">Create new plan</a>
+            <a class="collapse-item" href="/admin/meal-plan/all">All plans</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>

@@ -41,6 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/admin/page/update/{id}', 'Admin\PageController@updatePage');
   Route::post('/admin/delete/page/{id}', 'Admin\PageController@deletePage');
 
+  #MealPlans
+  Route::get('/admin/meal-plan/all', 'Admin\MealPlanController@allPlans');
+  Route::get('/admin/meal-plan/add', 'Admin\MealPlanController@addPlan');
+  Route::post('/admin/meal-plan/add', 'Admin\MealPlanController@storePlan');
+  Route::get('/admin/meal-plan/edit/{id}', 'Admin\MealPlanController@editPlan');
+  Route::post('/admin/meal-plan/update/{id}', 'Admin\MealPlanController@updatePlan');
+  Route::post('/admin/delete/meal-plan/{id}', 'Admin\MealPlanController@deletePlan');
+
   #Blogs
   Route::get('/admin/blog/all', 'Admin\BlogController@allBlogs');
   Route::get('/admin/blog/add', 'Admin\BlogController@addBlog');

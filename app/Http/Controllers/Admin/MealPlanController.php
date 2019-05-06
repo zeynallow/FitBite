@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Blog;
+use App\MealPlan;
 
 use Validator;
 use Carbon\Carbon;
@@ -14,7 +14,7 @@ use Image;
 use App\Http\Controllers\Controller as Controller;
 
 
-class BlogController extends Controller{
+class MealPlanController extends Controller{
 
 
   private $photos_path;
@@ -39,164 +39,130 @@ class BlogController extends Controller{
   }
 
   /*
-  * Blog
+  * Meal Plan
   */
-  public function allBlogs(){
-    $blogs = Blog::orderBy('created_at', 'desc')->paginate(20);
-    return view('admin.blogs.all_blogs',compact('blogs'));
+  public function allPlans(){
+    $plans = MealPlan::orderBy('created_at', 'desc')->paginate(20);
+    return view('admin.meal-plans.all_plans',compact('plans'));
   }
 
   /*
-  * Add Blog
+  * Add Plan
   */
 
-  public function addBlog(){
-    return view('admin.blogs.add_blog');
+  public function addPlan(){
+    return view('admin.meal-plans.add_plan');
   }
 
   /*
-  * Store Blog
+  * Store Plan
   */
 
-  public function storeBlog(Request $request){
+  public function storePlan(Request $request){
 
     //Validation
     $validator = Validator::make($request->all(), [
-      'title' => 'required|min:2|max:255',
-      'content' => 'required',
+      'name' => 'required|min:2|max:255',
       'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]
   );
 
   if($validator->fails()){
     $errors = $validator->errors();
-    return view('admin.blogs.add_blog', compact('errors'));
+    return view('admin.meal-plans.add_plan', compact('errors'));
   }
-
 
   $photo = $request->file('cover');
 
   #Upload
   File::makeDirectory($this->photos_path, $mode = 0777, true, true);
-
   $name = sha1(date('YmdHis') . str_random(30));
   $save_name = $name . '.' . $photo->getClientOriginalExtension();
   $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
-
-  Image::make($photo)
-  ->resize(250, null, function ($constraints) {
-    $constraints->aspectRatio();
-  })
-  ->save($this->photos_path . '/' . $resize_name);
-
   $photo->move($this->photos_path, $save_name);
-
   $photo_name = $this->_photos_path . '/' . $save_name;
-  $photo_cover = $this->_photos_path . '/' . $resize_name;
 
 
   #create
-  Blog::create([
-    'title'=>$request->title,
-    'slug'=>str_slug($request->title),
-    'content' => $request->content,
-    'photo' => $photo_name,
-    'cover' => $photo_cover
+  MealPlan::create([
+    'name'=>$request->name,
+    'slug'=>str_slug($request->name),
+    'cover' => $photo_name
   ]);
 
-  return redirect('/admin/blog/all');
+  return redirect('/admin/meal-plan/all');
 }
 
 
 
 /*
-* Edit Blog
+* Edit Plan
 */
 
-public function editBlog($id){
-  $blog = Blog::findOrFail($id);
-  return view('admin.blogs.edit_blog', compact('blog'));
+public function editPlan($id){
+  $plan = MealPlan::findOrFail($id);
+  return view('admin.meal-plans.edit_plan', compact('plan'));
 }
 
 
 /*
-* Update Blog
+* Update Plan
 */
 
-public function updateBlog(Request $request,$id){
-  $blog = Blog::findOrFail($id);
+public function updatePlan(Request $request,$id){
+  $plan = MealPlan::findOrFail($id);
 
   //Validation
   $validator = Validator::make($request->all(), [
-    'title' => 'required|min:2|max:255',
-    'content' => 'required',
+    'name' => 'required|min:2|max:255',
     'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
   ]
 );
 
 if($validator->fails()){
   $errors = $validator->errors();
-  return view('admin.blogs.edit_blog', compact('errors','blog'));
+  return view('admin.meal-plans.edit_plan', compact('errors','plan'));
 }
 
 
 #Upload
 $photo = $request->file('cover');
 if($photo){
-
   File::makeDirectory($this->photos_path, $mode = 0777, true, true);
-
   $name = sha1(date('YmdHis') . str_random(30));
   $save_name = $name . '.' . $photo->getClientOriginalExtension();
   $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
-
-  Image::make($photo)
-  ->resize(250, null, function ($constraints) {
-    $constraints->aspectRatio();
-  })
-  ->save($this->photos_path . '/' . $resize_name);
-
   $photo->move($this->photos_path, $save_name);
-
   $photo_name = $this->_photos_path . '/' . $save_name;
-  $photo_cover = $this->_photos_path . '/' . $resize_name;
 
-  #Update Blog
-  Blog::where('id', $id)->update([
-    'title'=>$request->title,
-    'slug'=>$request->slug,
-    'content' => $request->content,
-    'photo' => $photo_name,
-    'cover' => $photo_cover
+  #Update Plan
+  MealPlan::where('id', $id)->update([
+    'name'=>$request->name,
+    'cover' => $photo_name
   ]);
 
 }else{
 
-  #Update Blog
-  Blog::where('id', $id)->update([
-    'title'=>$request->title,
-    'slug'=>$request->slug,
-    'content' => $request->content
+  #Update Plan
+  MealPlan::where('id', $id)->update([
+    'name'=>$request->name
   ]);
 
 }
 
 
-
-
-
-return redirect('/admin/blog/all');
+return redirect('/admin/meal-plan/all');
 }
 
 /*
-* Delete Blog
+* Delete Plan
 */
 
-public function deleteBlog($id){
-  $blog = Blog::findOrFail($id);
-  $blog->delete();
+public function deletePlan($id){
+  $plan = MealPlan::findOrFail($id);
+  $plan->delete();
 
-  return redirect('/admin/blog/all');
+  return redirect('/admin/meal-plan/all');
 }
 
 
