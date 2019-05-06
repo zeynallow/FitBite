@@ -8,6 +8,9 @@ use App\Page;
 class PageController extends Controller
 {
 
+    /*
+    * Page
+    */
     public function index($page_slug){
 
       $getPage = Page::where('slug',$page_slug)->firstOrFail();

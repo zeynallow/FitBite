@@ -17,6 +17,9 @@ Route::get('/page/{page_slug}', 'PageController@index');
 Route::get('/blogs', 'BlogController@index');
 Route::get('/blog/{blog_slug}', 'BlogController@getBlog');
 
+Route::get('/meal-plans', 'MealPlanController@index');
+Route::get('/meal-plans/{plan_slug}', 'MealPlanController@index');
+
 
 
 /*=========== Admin ============*/
@@ -24,11 +27,10 @@ Route::get('/blog/{blog_slug}', 'BlogController@getBlog');
 Route::get('/admin/login', 'Admin\LoginController@index')->name('login');
 Route::post('/admin/login', 'Admin\LoginController@doLogin');
 
-
 Route::group(['middleware' => 'auth'], function () {
 
-  Route::get('/admin/logout', 'Admin\LoginController@logout');
   Route::get('/admin', 'Admin\DashboardController@index');
+  Route::get('/admin/logout', 'Admin\LoginController@logout');
   Route::get('/admin/dashboard', 'Admin\DashboardController@index');
 
   #Pages

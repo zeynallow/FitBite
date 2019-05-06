@@ -128,147 +128,39 @@
 <section class="block pricing-block" id="meal_plane">
   <div class="container">
 
-    <!-- top header text starts -->
     <div class="top-text-header text-center">
       <h4 class="wow fadeInUp text-center animated text-uppercase text-lt text-sp" style="visibility: visible; animation-name: fadeInUp;">PRICING & PLANS</h4>
-
     </div>
-    <!-- top header text ends -->
 
-    <!-- == pricing box starts == -->
     <div class="row">
 
-      <!-- pricing box single starts -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/atyab-plan.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Atyab Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
+      @if($getMealPlans)
+        @foreach ($getMealPlans as $key => $plan)
+          <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
+            <div class="text-center price-box-wrap">
+              <div class="plan-view">
+                <div class="plan-face">
+                  <div class="plan-image">
+                    <img src="{{$plan->cover}}" alt="">
+                  </div>
+                  <div class="plan-desc">
+                    <h5 class="text-lt">{{$plan->name}}</h5>
+                    <div class="plan-price">
+                      <span class="price">$39</span>
+                      <span class="per-day">/day</span>
+                    </div>
+                  </div><a href="/meal-plans/{{$plan->slug}}" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
                 </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
-
-      <!-- pricing box single starts -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/diabetic.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Diabetic Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
-                </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/vegetarian.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Vegetarian Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
-                </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
+        @endforeach
+      @endif
 
     </div>
-    <br/>
-    <div class="row">
-      <!-- pricing box single starts -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/atyab-plan.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Atyab Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
-                </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
-
-      <!-- pricing box single starts -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/diabetic.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Diabetic Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
-                </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
-      <div class="col-xs-12 col-sm-4 wow fadeInLeft pricing-box">
-        <div class="text-center price-box-wrap">
-          <div class="plan-view">
-            <div class="plan-face">
-              <div class="plan-image">
-                <img src="img/plans/vegetarian.jpg" alt="">
-              </div>
-              <div class="plan-desc">
-                <h5 class="text-lt">Vegetarian Plan</h5>
-                <div class="plan-price">
-                  <span class="price">$39</span>
-                  <span class="per-day">/day</span>
-                </div>
-              </div><a href="#" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- pricing box single ends -->
-
-    </div>
-    <!-- pricing box ends -->
   </div>
 </section>
 <!-- ============== pricing block ends ============== -->
-
 
 
 

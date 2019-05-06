@@ -52,6 +52,22 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="content">Şəkil</label>
+                  <input type="file" name="cover" class="form-control" value="">
+                  @if(!empty($errors->get('cover')))
+                    <ul class="alert-danger">
+                      @foreach ($errors->get('cover') as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  @endif
+                </div>
+              </div>
+            </div>
+
             <br/>
             <div class="row justify-content-center">
               <div class="col-md-4">
