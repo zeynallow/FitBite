@@ -215,7 +215,7 @@ img,object,embed{}
 	h6 {font-size:16px;line-height: 24px;}
 
 	/* header {padding: 16px 0px;z-index: 1;position: fixed;width: 100%;background: #fff;top: 0;} */
-	header {padding: 10px 0px 0px;z-index: 1;position: absolute;width: 100%;background: #fff;top: 0;}
+	header {padding: 10px 0px 0px;z-index: 1;position: relative;width: 100%;background: #fff;top: 0;}
 	.logo-block {margin-top: -15px;}
 	header.green .logo-block {margin-top: 4px;}
 	.logo-block figure {margin-bottom: 0;width: 240px;}
@@ -250,7 +250,7 @@ img,object,embed{}
 	.banner-text h1 strong{font-size: 46px;color: #60ba62;}
 	.banner-image img {position: absolute;left: -99999px;right: -99999px;margin: auto;width: auto;height: 406px;}
 	.bannerwrap figure {text-align: center;background: #fff;margin-bottom: 0;}
-
+	.banner-text-page h1 { color:#000!important}
 
 	/*======================= # Features section  ==================*/
 	.feature-item-wrap figure {height: 76px;margin-bottom: 15px;}
@@ -776,8 +776,6 @@ footer.limited-footer {font-family: 'Montserrat-Light', sans-serif;background: #
 .contact-right-form form fieldset:last-child {margin-bottom: 0;}
 .sample-menu-banner {height: 298px;overflow: hidden;width: 100%;}
 .select-menu-block select {text-align: center;}
-.sample-menu-banner figure img {position: absolute;left: -9999px;right: -9999px;margin: auto;}
-
 
 .sample-menu-page h3{font-family: 'Montserrat-Light', sans-serif; margin-bottom: 30px;}
 .menu-item-wrap h4 {text-transform: uppercase; margin-bottom: 0;}
@@ -815,8 +813,8 @@ ul.nav.nav-tabs {border-bottom: 0;}
 .food-listing-group .food-listing-row figure:before {position: absolute;width: 22px;height: 66px;top: 0;left: 0;content: '';}
 .food-listing-group .food-listing-row:nth-child(2n) figure:before {background: #f7ca18;}
 .food-listing-group .food-listing-row:nth-child(2n+1) figure:before {background: #60ba62;}
-.food-image {width: 18.3%;margin-right: 4.55%;}
-.food-type {width: 12%;margin-right: 2%;}
+.food-image {width: 20%;margin-right: 5%;}
+.food-type {width: 20%%;margin-right: 2%;}
 .food-type h5 {margin-bottom: 0;text-transform: capitalize;font-family: 'Montserrat-Light', sans-serif; letter-spacing: 0.1em;}
 .food-listing-group .food-listing-row:nth-child(2n) .food-type h5 a{color: #f7ca18;}
 .food-listing-group .food-listing-row:nth-child(2n+1) .food-type h5 a{color: #60ba62;}
@@ -824,7 +822,10 @@ ul.nav.nav-tabs {border-bottom: 0;}
 .food-ingredients {font-size: 15px;font-family: 'Montserrat-Light', sans-serif;line-height: 23px;width: 40%;margin-right: 3%;}
 .food-category .border-btn-small {border: 1px solid #ddd;font-size: 11px;font-family: 'Montserrat-Light', sans-serif;color: #848484;padding: 7px 20px;}
 .food-category .border-btn-small:hover{color: #fff;border: 1px solid #60ba62;}
-.food-listing-row {padding-bottom: 36px;border-bottom: 1px solid #fafafa;}
+.food-listing-row {
+	box-shadow: 0px -1px 20px 0px #00000024;
+    margin-bottom: 10px;
+}
 .food-category {width: 19%;text-align: right;}
 .food-listing-group .food-listing-row a:hover figure:before{height: 100%;}
 .food-listing-group .food-listing-row:last-child {margin-bottom: 0;}
@@ -1233,7 +1234,7 @@ ul.sucess-slide{}
 		.support-tab .nav-tabs>li>a:after { content: ''; position: absolute; bottom: -62px; left: 0; right: 0; margin: auto; height: 27px; width: 50px; background: url(../images/tab-active.png) no-repeat bottom center; opacity: 0;}
 		.support-tab .nav-tabs>li.active>a:after, .support-tab .nav-tabs>li>a:hover:after, .support-tab .nav-tabs>li>a:focus:after { opacity: 1;}
 		.tab-content-block{ background: #fafafa;  border: 1px solid #e2e2e2; border-width: 1px 0; padding: 53px 0; }
-
+		.tab-content {padding-bottom: 100px;}
 		.try-block{ background: #fafafa; margin-bottom: 90px; padding: 56px 0;  }
 		.try-block h3, .try-block .btn{ display: inline-block; margin: 0; vertical-align: middle; }
 		.try-block h3{ margin-right: 100px; }
@@ -1983,8 +1984,10 @@ ul.sucess-slide{}
 	background-color: #aaa;
 	} */
 
+	.form-control{ height: auto!important;}
 
 .order-box{
-	border: 1px solid #62ba63;
+	border: 1px solid #00000040;
     padding: 15px;
+    box-shadow: -1px 5px 13px 0px #00000040;
 }

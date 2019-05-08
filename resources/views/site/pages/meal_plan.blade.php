@@ -4,11 +4,12 @@
   <section class="banner sample-menu-banner">
     <div class="bannerwrap">
       <figure><img src="/images/sample-menu-banner.jpg" alt="Sample menu banner" /></figure>
-      <div class="banner-text text-center">
-        <h1 class="text-uppercase">Meal plans</h1>
+      <div class="banner-text text-center banner-text-page">
+        <h1>Meal plans</h1>
       </div>
     </div>
   </section>
+
 
   <main>
 
@@ -36,7 +37,7 @@
             <!--plan start-->
               <div role="tabpanel" class="tab-pane fade {{($key == 0) ? 'in active' : ''}}" id="plan_{{$plan->id}}">
                 <div class="row">
-                  <div class="col-md-9">
+                  <div class="col-md-8">
                     <!-- == food listing group starts == -->
                     <div class="food-listing-group">
                       @if($plan->getIncludes)
@@ -63,7 +64,7 @@
                     </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="order-box">
 
                         <form class=""  method="post">
@@ -71,19 +72,32 @@
                           <div class="form-group">
                             <label for="week">How many days per week? </label>
                             <select class="form-control" name="">
-                              <option value="">4 week</option>
+                              <option value="">5 days per week</option>
+                              <option value="">6 days per week</option>
+                              <option value="">7 days per week</option>
                             </select>
                           </div>
 
                           <div class="form-group">
-                            <label for="week">How many days per week? </label>
+                            <label for="week">How long do you want to maintain your healthy lifestyle?</label>
                             <select class="form-control" name="">
-                              <option value="">4 week</option>
+                              <option value="">1 day</option>
+                              <option value="">1 week</option>
+                              <option value="">4 weeks</option>
                             </select>
                           </div>
 
                           <div class="form-group">
-                            <button type="button" name="button" class="btn btn-success">Order now</button>
+                            <label for="week">Select eat time</label>
+                            <select class="form-control" name="">
+                              <option value="">Breakfast-Lunch</option>
+                              <option value="">Lunch-Dinner</option>
+                              <option value="">Breakfast-Dinner</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <button type="button" name="button" class="form-control btn btn-success">Order now</button>
                           </div>
 
 

@@ -37,7 +37,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-2 nav-right-btn">
-        <a class="btn border-btn-small" href="#meal_plane"  style="top: 10px;position: relative;">choose plan</a>
+        <a class="btn border-btn-small" href="#meal_plane"  style="top: 10px;position: relative;"><i class="fa fa-user"></i> login</a>
       </div>
       <!-- ============== Main navigation ends ============== -->
 

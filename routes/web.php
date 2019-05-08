@@ -57,5 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/admin/blog/update/{id}', 'Admin\BlogController@updateBlog');
   Route::post('/admin/delete/blog/{id}', 'Admin\BlogController@deleteBlog');
 
+  #User
+  Route::get('/admin/user/all', 'Admin\UserController@allUsers');
+  Route::get('/admin/user/edit/{id}', 'Admin\UserController@editUser');
+  Route::post('/admin/user/update/{id}', 'Admin\UserController@updateUser');
+  Route::post('/admin/delete/user/{id}', 'Admin\UserController@deleteUser');
+
 
 });
