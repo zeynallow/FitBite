@@ -146,7 +146,7 @@
                   <div class="plan-desc">
                     <h5 class="text-lt">{{$plan->name}}</h5>
                     <div class="plan-price">
-                      <span class="price">$39</span>
+                      <span class="price">{{$plan->full_day}} <small style="font-size: 14px;vertical-align: middle;">AED</small></span>
                       <span class="per-day">/day</span>
                     </div>
                   </div><a href="/meal-plans/{{$plan->slug}}" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>

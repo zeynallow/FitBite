@@ -35,6 +35,38 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="full_day">Full day price</label>
+                  <input type="text" name="full_day" id="full_day" class="form-control" value="{{$plan->full_day}}">
+                  @if(!empty($errors->get('full_day')))
+                    <ul class="alert-danger">
+                      @foreach ($errors->get('full_day') as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  @endif
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="half_day">Half day price</label>
+                  <input type="text" name="half_day" id="half_day" class="form-control" value="{{$plan->half_day}}">
+                  @if(!empty($errors->get('half_day')))
+                    <ul class="alert-danger">
+                      @foreach ($errors->get('half_day') as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  @endif
+                </div>
+              </div>
+            </div>
+
 
             <div class="row">
               <div class="col-md-8">

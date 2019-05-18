@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MealPlan extends Model
 {
 
-  protected $fillable = ['name','cover','slug'];
+  protected $fillable = ['name','cover','slug','half_day','full_day'];
 
     /*
     * Get Plan Includes

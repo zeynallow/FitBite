@@ -26,6 +26,9 @@
   </div>
 
   @include('site.includes.foot')
+
+  @stack('js')
+  
 </body>
 
 </html>

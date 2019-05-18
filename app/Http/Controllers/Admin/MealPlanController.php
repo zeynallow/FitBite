@@ -63,6 +63,8 @@ class MealPlanController extends Controller{
     //Validation
     $validator = Validator::make($request->all(), [
       'name' => 'required|min:2|max:255',
+      'full_day' => 'required',
+      'half_day' => 'required',
       'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]
   );
@@ -86,6 +88,8 @@ class MealPlanController extends Controller{
   #create
   MealPlan::create([
     'name'=>$request->name,
+    'full_day'=>$request->full_day,
+    'half_day'=>$request->half_day,
     'slug'=>str_slug($request->name),
     'cover' => $photo_name
   ]);
@@ -115,6 +119,8 @@ public function updatePlan(Request $request,$id){
   //Validation
   $validator = Validator::make($request->all(), [
     'name' => 'required|min:2|max:255',
+    'full_day' => 'required',
+    'half_day' => 'required',
     'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
   ]
 );
@@ -138,6 +144,8 @@ if($photo){
   #Update Plan
   MealPlan::where('id', $id)->update([
     'name'=>$request->name,
+    'full_day'=>$request->full_day,
+    'half_day'=>$request->half_day,
     'cover' => $photo_name
   ]);
 
