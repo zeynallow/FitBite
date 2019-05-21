@@ -268,6 +268,7 @@
 </section>
 <!-- ============== instagram block starts ============== -->
 
+@include('site.includes.login')
 
 </main>
 <!-- ============== footer block starts ============== -->
@@ -279,6 +280,7 @@
 <!-- main wrapper of the site ends -->
 
 @include('site.includes.foot')
+@stack('js')
 </body>
 
 </html>

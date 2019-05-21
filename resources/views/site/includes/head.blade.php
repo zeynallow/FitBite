@@ -18,6 +18,8 @@
   <link href="{{asset('css/jquery-ui-1.9.2.custom.css')}}" rel="stylesheet">
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
   <!-- montserrat font embed -->
   <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,700' rel='stylesheet' type='text/css'>
 

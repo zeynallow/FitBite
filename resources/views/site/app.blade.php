@@ -25,10 +25,12 @@
 
   </div>
 
+  @include('site.includes.login')
+
   @include('site.includes.foot')
 
   @stack('js')
-  
+
 </body>
 
 </html>

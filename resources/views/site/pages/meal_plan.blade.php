@@ -67,18 +67,18 @@
                   <div class="col-md-4">
                     <div class="order-box">
 
-                      <form class=""  method="post">
+                      <form class="" action="/meal-plans/{{$plan->id}}/order" method="post">
                         <div class="form-group">
                           <label for="week">How long do you want to maintain your healthy lifestyle?</label>
-                          <select class="form-control" name="" id="select_day_{{$plan->id}}">
+                          <select class="form-control" name="select_day" id="select_day_{{$plan->id}}">
                             <option value="1">1 day</option>
                             <option value="2">1 week</option>
                             <option value="3">4 weeks</option>
                           </select>
                         </div>
-                        <div class="form-group" id="day_per_week" style="display:none;">
+                        <div class="form-group" id="day_per_week_{{$plan->id}}" style="display:none;">
                           <label for="week">How many days per week? </label>
-                          <select class="form-control" name="" id="select_day_per_week_{{$plan->id}}">
+                          <select class="form-control" name="select_day_per_week" id="select_day_per_week_{{$plan->id}}">
                             <option value="5">5 days per week</option>
                             <option value="6">6 days per week</option>
                             <option value="7">7 days per week</option>
@@ -87,14 +87,21 @@
 
                         <div class="form-group">
                           <label for="week">Select eat time</label>
-                          <select class="form-control" name="" id="select_eat_time_{{$plan->id}}">
-                            <option value="" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>
+                          <select class="form-control" name="select_eat_time" id="select_eat_time_{{$plan->id}}">
+                            <option value="1" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>
                           </select>
                         </div>
-
+                        @csrf
                         <h3>Total: <span id="total_price_{{$plan->id}}">{{$plan->full_day}}</span> AED</h3>
                         <div class="form-group">
-                          <button type="button" name="button" class="form-control btn btn-success">Order now</button>
+
+                          @if (Auth::guest())
+                            <button type="button" data-toggle="modal" data-target="#loginModal" name="button" class="form-control btn btn-success">Order now</button>
+                          @else
+
+                            <button type="submit" name="button" class="form-control btn btn-success">Order now</button>
+                          @endif
+
                         </div>
                       </form>
 
@@ -111,13 +118,13 @@
                   var select_day = $(this).val();
                   if(select_day == 1){
                     $("#day_per_week_{{$plan->id}}").hide();
-                    $("#select_eat_time_{{$plan->id}}").empty().append('<option value="" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>');
+                    $("#select_eat_time_{{$plan->id}}").empty().append('<option value="1" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>');
                   }else{
                     $("#day_per_week_{{$plan->id}}").show();
-                    $("#select_eat_time_{{$plan->id}}").empty().append('<option value="" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>');
-                    $("#select_eat_time_{{$plan->id}}").append('<option value="" data-price="{{$plan->half_day}}">Breakfast-Lunch</option>');
-                    $("#select_eat_time_{{$plan->id}}").append('<option value="" data-price="{{$plan->half_day}}">Lunch-Dinner</option>');
-                    $("#select_eat_time_{{$plan->id}}").append('<option value="" data-price="{{$plan->half_day}}">Breakfast-Dinner</option>');
+                    $("#select_eat_time_{{$plan->id}}").empty().append('<option value="1" data-price="{{$plan->full_day}}">Breakfast-Lunch-Dinner</option>');
+                    $("#select_eat_time_{{$plan->id}}").append('<option value="2" data-price="{{$plan->half_day}}">Breakfast-Lunch</option>');
+                    $("#select_eat_time_{{$plan->id}}").append('<option value="3" data-price="{{$plan->half_day}}">Lunch-Dinner</option>');
+                    $("#select_eat_time_{{$plan->id}}").append('<option value="4" data-price="{{$plan->half_day}}">Breakfast-Dinner</option>');
                   }
                   var select_day_per_week = $("#select_day_per_week_{{$plan->id}}").val();
                   var price_eat_time = $("#select_eat_time_{{$plan->id}}").find(':selected').data('price');

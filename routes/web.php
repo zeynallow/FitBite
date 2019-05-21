@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/page/{page_slug}', 'PageController@index');
 
 Route::get('/blogs', 'BlogController@index');
@@ -19,7 +20,13 @@ Route::get('/blog/{blog_slug}', 'BlogController@getBlog');
 
 Route::get('/meal-plans', 'MealPlanController@index');
 Route::get('/meal-plans/{plan_slug}', 'MealPlanController@index');
+Route::post('/meal-plans/{plan_slug}/order', 'MealPlanController@orderPlanGenerate');
 
+Route::get('/order/{order_id}', 'MealPlanController@orderPlan');
+
+
+Route::post('/login', 'Auth\LoginController@doLogin');
+Route::get('/profile/logout', 'Auth\LoginController@doLogout');
 
 
 /*=========== Admin ============*/
