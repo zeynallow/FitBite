@@ -59,7 +59,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/admin/orders/all">
           <i class="fas fa-fw fa-shopping-cart"></i>
           <span>Orders</span></a>
       </li>

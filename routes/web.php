@@ -11,27 +11,39 @@
 |
 */
 
+#Page
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/page/{page_slug}', 'PageController@index');
 
+#Blog
 Route::get('/blogs', 'BlogController@index');
 Route::get('/blog/{blog_slug}', 'BlogController@getBlog');
 
+#Meal Plans
 Route::get('/meal-plans', 'MealPlanController@index');
 Route::get('/meal-plans/{plan_slug}', 'MealPlanController@index');
-Route::post('/meal-plans/{plan_slug}/order', 'MealPlanController@orderPlanGenerate');
-
+Route::post('/meal-plans/{plan_id}/order', 'MealPlanController@orderPlanGenerate');
 Route::get('/order/{order_id}', 'MealPlanController@orderPlan');
+Route::post('/confirm-order/{order_id}', 'MealPlanController@confirmOrderPlan');
 
 
+#Profile
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/my-orders', 'ProfileController@myOrders');
+    Route::get('/profile/my-profile', 'ProfileController@myProfile');
+});
+
+#Auth
+Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::post('/login', 'Auth\LoginController@doLogin');
 Route::get('/profile/logout', 'Auth\LoginController@doLogout');
 
 
 /*=========== Admin ============*/
 
-Route::get('/admin/login', 'Admin\LoginController@index')->name('login');
+Route::get('/admin/login', 'Admin\LoginController@index');
 Route::post('/admin/login', 'Admin\LoginController@doLogin');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -56,6 +68,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/admin/meal-plan/update/{id}', 'Admin\MealPlanController@updatePlan');
   Route::post('/admin/delete/meal-plan/{id}', 'Admin\MealPlanController@deletePlan');
 
+    #Ajax
+    Route::post('/admin/meal-plan/add-include', 'Admin\MealPlanController@addInclude');
+    Route::get('/admin/meal-plan/delete-include', 'Admin\MealPlanController@deleteInclude');
+
   #Blogs
   Route::get('/admin/blog/all', 'Admin\BlogController@allBlogs');
   Route::get('/admin/blog/add', 'Admin\BlogController@addBlog');
@@ -70,5 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/admin/user/update/{id}', 'Admin\UserController@updateUser');
   Route::post('/admin/delete/user/{id}', 'Admin\UserController@deleteUser');
 
+  #Order
+  Route::get('/admin/orders/all', 'Admin\OrderController@index');
 
 });

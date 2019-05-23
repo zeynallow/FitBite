@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 
 use App\MealPlan;
+use App\MealPlanIncludes;
 
 use Validator;
 use Carbon\Carbon;
@@ -86,7 +87,7 @@ class MealPlanController extends Controller{
 
 
   #create
-  MealPlan::create([
+  $create = MealPlan::create([
     'name'=>$request->name,
     'full_day'=>$request->full_day,
     'half_day'=>$request->half_day,
@@ -94,7 +95,7 @@ class MealPlanController extends Controller{
     'cover' => $photo_name
   ]);
 
-  return redirect('/admin/meal-plan/all');
+  return redirect("/admin/meal-plan/edit/{$create->id}");
 }
 
 
@@ -171,6 +172,62 @@ public function deletePlan($id){
   $plan->delete();
 
   return redirect('/admin/meal-plan/all');
+}
+
+
+/*
+* Add Includes
+*/
+
+public function addInclude(Request $request){
+
+  //Validation
+  $validator = Validator::make($request->all(), [
+    'cover' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+  ]
+  );
+
+
+  if($validator->fails()){
+    $errors = $validator->errors();
+    return response()->json($errors,400);
+  }
+
+  #Upload
+  $photo = $request->file('cover');
+  if($photo){
+    File::makeDirectory($this->photos_path, $mode = 0777, true, true);
+    $name = sha1(date('YmdHis') . str_random(30));
+    $save_name = $name . '.' . $photo->getClientOriginalExtension();
+    $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
+    $photo->move($this->photos_path, $save_name);
+    $photo_name = $this->_photos_path . '/' . $save_name;
+  }else{
+    $photo_name=NULL;
+  }
+
+
+  $includes = MealPlanIncludes::create([
+    'plan_id'=>$request->plan_id,
+    'name'=>$request->name,
+    'includes'=>$request->includes,
+    'cover'=>$photo_name
+  ]);
+
+  return response()->json($includes);
+
+}
+
+/*
+* Delete Includes
+*/
+
+public function deleteInclude(Request $request){
+
+  $delete = MealPlanIncludes::where('id',$request->id)->delete();
+
+  return response()->json($delete);
+
 }
 
 

@@ -36,7 +36,6 @@
               </thead>
 
               <tbody>
-                <tr>
                   @if($pages)
                     @foreach($pages as $page)
                       <tr>
@@ -59,7 +58,6 @@
                       </tr>
                     @endforeach
                   @endif
-                </tr>
               </tbody>
             </table>
           </div>

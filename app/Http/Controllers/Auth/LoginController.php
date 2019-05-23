@@ -40,16 +40,16 @@ class LoginController extends Controller
 
 
 
-  // public function index()
-  // {
-  //   if(Auth::user()){
-  //     return redirect()->to("/home");
-  //   }else{
-  //     return view('Desktop.pages.login');
-  //   }
-  //
-  // }
-  //
+  public function index()
+  {
+    if(Auth::user()){
+      return redirect()->to("/home");
+    }else{
+      return view('site.pages.login');
+    }
+
+  }
+
 
   /*
   * Login Request

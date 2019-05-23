@@ -35,7 +35,6 @@
               </thead>
 
               <tbody>
-                <tr>
                   @if($plans)
                     @foreach($plans as $plan)
                       <tr>
@@ -57,7 +56,6 @@
                       </tr>
                     @endforeach
                   @endif
-                </tr>
               </tbody>
             </table>
           </div>
