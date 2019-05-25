@@ -136,8 +136,11 @@ img,object,embed{}
 	p, /***.top-text,**/input, select, textarea, span, blockquote, a, li {font-family: 'Montserrat-Light', sans-serif;}
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {font-family: 'Montserrat-Regular', sans-serif;color: #575757;}
 	h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {color: #60ba62;}
-	.btn, input[type=submit], button {padding: 15px 31px;color: #fff;background: #60ba62;font-size: 14px;text-transform: uppercase;}
-	.btn:hover, input[type=submit]:hover, button:hover {background: #575757;color: #fff;}
+	.btn-primary{background: #60ba62;border:1px #60ba62 solid;}
+	.btn {border-radius: 10px;text-transform: uppercase;}
+	.btn-secondary {
+		border: 1px #5b5b5b solid;
+	}
 	.border-btn-small {border-radius: 0;border: 2px solid #60ba62;color: #60ba62;font-size: 13px;text-transform: uppercase;background: transparent;padding: 5px 21px;}
 	.border-btn-big {border-radius: 0;border: 2px solid #60ba62;color: #60ba62;font-size: 23px;text-transform: capitalize;background: transparent;padding: 11px 55px;}
 	.border-btn-x-big{font-family: 'Montserrat-Light', sans-serif;border-radius: 4px;border: 2px solid #60ba62;color: #60ba62;font-size: 25px;text-transform: uppercase;background: transparent;padding: 11px 55px;}
@@ -824,7 +827,7 @@ ul.nav.nav-tabs {border-bottom: 0;}
 .food-category .border-btn-small:hover{color: #fff;border: 1px solid #60ba62;}
 .food-listing-row {
 	box-shadow: 0px -1px 20px 0px #00000024;
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .food-category {width: 19%;text-align: right;}
 .food-listing-group .food-listing-row a:hover figure:before{height: 100%;}
@@ -853,12 +856,12 @@ figure {overflow: hidden;}
 .blog-lisiting .pagination {margin-right: 30px;margin-bottom: 0;}
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
 	background-color: #60ba62;
-    border-color: #60ba62;
+	border-color: #60ba62;
 }
 .pagination>li>a, .pagination>li>span{
 	background-color: #fff;
 	color:#60ba62;
-    border-color: #60ba62;
+	border-color: #60ba62;
 }
 /*======================= # Blog page with sidebar ==================*/
 .blog-banner {height: 462px;overflow: hidden;}
@@ -1986,8 +1989,8 @@ ul.sucess-slide{}
 
 	.form-control{ height: auto!important;}
 
-.order-box{
-	border: 1px solid #00000040;
-    padding: 15px;
-    box-shadow: -1px 5px 13px 0px #00000040;
-}
+	.order-box{
+		border: 1px solid #00000040;
+		padding: 15px;
+		box-shadow: -1px 5px 13px 0px #00000040;
+	}

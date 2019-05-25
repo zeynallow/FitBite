@@ -15,52 +15,58 @@
     <section class="block">
       <div class="container">
         <div class="alert alert-info">
-             Please confirm your order
+          Please confirm your order
         </div>
 
         <div class="row">
           <div class="col-md-6">
             <table class="table">
-                <tr>
-                  <td>Plan</td><td>{{($getOrder->getPlan) ? $getOrder->getPlan->name : ''}}</td>
-                </tr>
-                <tr>
-                  <td>How long do you want to maintain your healthy lifestyle?</td><td>{{$getOrder->select_day}}</td>
-                </tr>
-                <tr>
-                  <td>How many days per week?</td><td>{{$getOrder->select_day_per_week}}</td>
-                </tr>
-                <tr>
-                  <td>Eat time</td><td>{{$getOrder->select_eat_time}}</td>
-                </tr>
-                <tr>
-                  <td>Total amount</td><td>0 AED</td>
-                </tr>
+              <tr>
+                <td>Plan</td><td>{{($getOrder->getPlan) ? $getOrder->getPlan->name : ''}}</td>
+              </tr>
+              <tr>
+                <td>How long do you want to maintain your healthy lifestyle?</td><td>
+                  {{$getOrder->getData('select_day',$getOrder->select_day)}}
+                </td>
+              </tr>
+              <tr>
+                <td>How many days per week?</td><td>
+                  {{$getOrder->getData('select_day_per_week',$getOrder->select_day_per_week)}}
+                </td>
+              </tr>
+              <tr>
+                <td>Eat time</td><td>
+                  {{$getOrder->getData('select_eat_time',$getOrder->select_eat_time)}}
+                </td>
+              </tr>
+              <tr>
+                <td>Total amount</td><td>{{$getOrder->amount}} {{$getOrder->currency}}</td>
+              </tr>
             </table>
           </div>
         </div>
 
-      <form action="/confirm-order/{{$getOrder->id}}" method="post">
-        @csrf
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="start_date">Start date</label>
-              <input type="date" class="form-control" id="start_date" name="start_date" value=""/>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <button type="submit" class="form-control btn btn-success">Confirm</button>
+        <form action="/confirm-order/{{$getOrder->id}}" method="post">
+          @csrf
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="start_date">Start date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" value=""/>
+              </div>
             </div>
           </div>
 
-        </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <button type="submit" class="form-control btn btn-success">Confirm</button>
+              </div>
+            </div>
 
-      </form>
+          </div>
+
+        </form>
 
       </section>
     </div>

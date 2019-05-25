@@ -24,6 +24,14 @@ class OrderPlan extends Model
     return $this->belongsTo('App\User','user_id');
   }
 
+  /*
+  * Get Data
+  */
+  public function getData($type,$data){
+    $data = MealPlanData::where('type',$type)->where('data',$data)->first();
+    return $data->value;
+  }
+
 
 
 }

@@ -30,7 +30,7 @@
               <div class="banner-text text-left">
                 <h1 class="text-capitalize">Healthy Food, <span>For breakfast.</span></h1>
                 <p>We deliver healthy food that are ready to eat. Just choose your own menu you like.</p>
-                <a href="#" class="btn">learn more</a>
+                <a href="#" class="btn btn-primary">learn more</a>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@
               <div class="banner-text text-left">
                 <h1 class="text-capitalize">Healthy Food, <span>For Bit.</span></h1>
                 <p>Just choose your own menu you like. Lorem ispus</p>
-                <a href="#" class="btn">learn more</a>
+                <a href="#" class="btn btn-primary">learn more</a>
               </div>
             </div>
 
@@ -149,7 +149,7 @@
                       <span class="price">{{$plan->full_day}} <small style="font-size: 14px;vertical-align: middle;">AED</small></span>
                       <span class="per-day">/day</span>
                     </div>
-                  </div><a href="/meal-plans/{{$plan->slug}}" class="btn box-btn order-now-btn test-uppercase text-sp">View plan</a>
+                  </div><a href="/meal-plans/{{$plan->slug}}" class="btn btn-primary box-btn order-now-btn test-uppercase text-sp">View plan</a>
                 </div>
               </div>
             </div>

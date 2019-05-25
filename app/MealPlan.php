@@ -15,4 +15,7 @@ class MealPlan extends Model
     public function getIncludes(){
       return $this->hasMany('App\MealPlanIncludes','plan_id');
     }
+
+
+
 }
