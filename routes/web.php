@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', 'ProfileController@index');
     Route::get('/profile/my-orders', 'ProfileController@myOrders');
     Route::get('/profile/my-profile', 'ProfileController@myProfile');
+    Route::post('/profile/my-profile', 'ProfileController@storeProfile');
+    Route::get('/cancel-order/{order_id}', 'ProfileController@orderCancel');
 });
 
 #Auth
@@ -59,6 +61,14 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/admin/page/edit/{id}', 'Admin\PageController@editPage');
   Route::post('/admin/page/update/{id}', 'Admin\PageController@updatePage');
   Route::post('/admin/delete/page/{id}', 'Admin\PageController@deletePage');
+
+  #Slider
+  Route::get('/admin/slider/all', 'Admin\SliderController@allSlider');
+  Route::get('/admin/slider/add', 'Admin\SliderController@addSlide');
+  Route::post('/admin/slider/add', 'Admin\SliderController@storeSlide');
+  Route::get('/admin/slider/edit/{id}', 'Admin\SliderController@editSlide');
+  Route::post('/admin/slider/update/{id}', 'Admin\SliderController@updateSlide');
+  Route::post('/admin/delete/slider/{id}', 'Admin\SliderController@deleteSlide');
 
   #MealPlans
   Route::get('/admin/meal-plan/all', 'Admin\MealPlanController@allPlans');
@@ -88,5 +98,15 @@ Route::group(['middleware' => 'auth'], function () {
 
   #Order
   Route::get('/admin/orders/all', 'Admin\OrderController@index');
+
+    #Order Action
+    Route::get('/admin/orders/statusApprove/{order_id}', 'Admin\OrderController@statusApprove');
+    Route::get('/admin/orders/statusDecline/{order_id}', 'Admin\OrderController@statusDecline');
+    Route::get('/admin/orders/paymentPaid/{order_id}', 'Admin\OrderController@paymentPaid');
+    Route::get('/admin/orders/paymentNoPaid/{order_id}', 'Admin\OrderController@paymentNoPaid');
+
+
+
+
 
 });

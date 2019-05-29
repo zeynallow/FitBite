@@ -780,7 +780,7 @@ footer.limited-footer {font-family: 'Montserrat-Light', sans-serif;background: #
 .sample-menu-banner {height: 298px;overflow: hidden;width: 100%;}
 .select-menu-block select {text-align: center;}
 
-.sample-menu-page h3{font-family: 'Montserrat-Light', sans-serif; margin-bottom: 30px;}
+.sample-menu-page h3{font-family: 'Montserrat-Light', sans-serif; margin-bottom: 30px;height: 60px;max-height: 60px;}
 .menu-item-wrap h4 {text-transform: uppercase; margin-bottom: 0;}
 .menu-item-wrap h4 a {color: #60ba62;font-family: "Montserrat-Light", sans-serif;}
 .menu-item-wrap figure {height: 265px;overflow: hidden;margin-bottom: 23px;}
@@ -849,10 +849,11 @@ ul.nav.nav-tabs {border-bottom: 0;}
 .blog-admin .admin {font-size: 13px;line-height: 18px;display: inline-block;color: #848484;}
 .blog-admin .admin:hover {color: #60ba62;}
 .blog-admin {width: 22.5%;}
+.blog-img{max-height: 200px;object-fit: cover;}
 .blog-post-wrap p{margin-bottom: 20px;line-height: 24px;}
 figure {overflow: hidden;}
 .blog-lisiting {padding-right: 3.6%;}
-.blog-post-wrap {border-bottom: 1px solid #ededed;padding-bottom: 40px;margin-bottom: 40px;}
+.blog-post-wrap {padding-bottom: 20px;}
 .blog-lisiting .pagination {margin-right: 30px;margin-bottom: 0;}
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus{
 	background-color: #60ba62;
@@ -933,7 +934,8 @@ p.comment-form-comment label {display: none;}
 .sidebar-widget h6 a {color: #575757;}
 .sidebar-widget h6 a:hover {color: #60ba62;}
 .sidebar-wrap .date {font-size: 13px;color: #cecece;}
-.sidebar-widget ul h6 {font-size: 15px;font-family: 'Montserrat-Light', sans-serif;margin-bottom: 3px;line-height: 25px;}
+.sidebar-widget img{max-height: 50px;min-width: 80px;object-fit: cover;}
+.sidebar-widget ul h6 {font-size: 14px;font-family: 'Montserrat-Light', sans-serif;margin-bottom: 0px;line-height: 20px;margin-left: -10px;}
 .sidebar-widget ul li {border-bottom: 1px solid #cecece;margin-bottom: 22px;padding-bottom: 22px;}
 .sidebar-widget ul li:last-child {border-bottom: 0;}
 

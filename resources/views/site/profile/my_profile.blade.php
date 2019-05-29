@@ -25,7 +25,61 @@
       </div>
 
       <div class="container">
-          
+        <div class="row">
+          <div class="col-md-6">
+
+            @if( Session::has( 'success' ))
+              <div class="alert alert-success">
+              {{ Session::get( 'success' ) }}
+            </div>
+            @endif
+
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+
+            <form class="" action="" method="post">
+              @csrf
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name"  class="form-control" value="{{(Auth::user()) ? Auth::user()->name : ''}}">
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email" class="form-control" value="{{(Auth::user()) ? Auth::user()->email : ''}}">
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone" class="form-control" value="{{(Auth::user()) ? Auth::user()->phone : ''}}">
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" value="">
+                <small>Leave empty to keep the same</small>
+              </div>
+
+              <div class="form-group" id="f_password" style="display:none;">
+                <label for="c_password">Confirm Password</label>
+                <input type="password" id="c_password" name="password_confirmation" class="form-control" value="">
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="form-control btn btn-success" name="button">Update profile</button>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
       </div>
 
     </section>
@@ -33,3 +87,15 @@
 
 
 @endsection
+@push('js')
+  <script type="text/javascript">
+  $('#password').keyup(function(){
+    var pass = $(this).val();
+    if(pass.length > 0){
+      $("#f_password").fadeIn();
+    }else{
+      $("#f_password").fadeOut();
+    }
+  });
+  </script>
+@endpush

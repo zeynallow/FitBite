@@ -51,6 +51,8 @@
                           <span class="btn btn-warning">Pending</span>
                         @elseif($order->status == 2)
                           <span class="btn btn-success">Approved</span>
+                        @elseif($order->status == 3)
+                          <span class="btn btn-danger">Declined</span>
                         @else
                           <span class="btn btn-danger">Cancelled</span>
                         @endif
@@ -119,15 +121,25 @@
                     <td>Status</td><td>
                       @if($order->status == 1)
                         <span class="btn btn-warning">Pending</span>
-                        <span class="btn btn-success btn-icon-split btn-sm">
+                        <span onclick="statusApprove({{$order->id}})" class="btn btn-success btn-icon-split btn-sm">
                           <span class="icon text-white-50"><i class="fa fa-check"></i></span>
                           <span class="text">Approve</span>
                         </span>
-                      @elseif($order->status == 2)
-                        <span class="btn btn-success">Approved</span>
-                        <span class="btn btn-danger btn-icon-split btn-sm">
+                        <span onclick="statusDecline({{$order->id}})" class="btn btn-danger btn-icon-split btn-sm">
                           <span class="icon text-white-50"><i class="fa fa-times"></i></span>
                           <span class="text">Decline</span>
+                        </span>
+                      @elseif($order->status == 2)
+                        <span class="btn btn-success">Approved</span>
+                        <span onclick="statusDecline({{$order->id}})" class="btn btn-danger btn-icon-split btn-sm">
+                          <span class="icon text-white-50"><i class="fa fa-times"></i></span>
+                          <span class="text">Decline</span>
+                        </span>
+                      @elseif($order->status == 3)
+                        <span class="btn btn-danger">Declined</span>
+                        <span onclick="statusApprove({{$order->id}})" class="btn btn-success btn-icon-split btn-sm">
+                          <span class="icon text-white-50"><i class="fa fa-check"></i></span>
+                          <span class="text">Approve</span>
                         </span>
                       @else
                         <span class="btn btn-danger">Cancelled</span>
@@ -135,11 +147,20 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>Payment status</td><td>{!!($order->payment_status == 0) ? '<span class="btn btn-danger">No Paid</span>' : '<span class="btn btn-success">Paid</span>'!!}
-                      <span class="btn btn-success btn-icon-split btn-sm">
-                        <span class="icon text-white-50"><i class="fa fa-check"></i></span>
-                        <span class="text">Set paid</span>
-                      </span>
+                    <td>Payment status</td><td>
+                      @if($order->payment_status == 0)
+                        <span class="btn btn-danger">No Paid</span>
+                        <span onclick="paymentPaid({{$order->id}})" class="btn btn-success btn-icon-split btn-sm">
+                          <span class="icon text-white-50"><i class="fa fa-check"></i></span>
+                          <span class="text">Set paid</span>
+                        </span>
+                      @else
+                        <span class="btn btn-success">Paid</span>
+                        <span onclick="paymentNoPaid({{$order->id}})" class="btn btn-success btn-icon-split btn-sm">
+                          <span class="icon text-white-50"><i class="fa fa-check"></i></span>
+                          <span class="text">Set No Paid</span>
+                        </span>
+                      @endif
                     </td>
                   </tr>
                   <tr>
@@ -184,6 +205,64 @@
           swal("Cancelled", "You have cancelled", "error");
         }
       });
+    }
+
+
+
+    function statusApprove(order_id){
+      $.ajax({
+        url:'/admin/orders/statusApprove/'+order_id,
+        method:'GET',
+        success:function(data){
+          swal("Success", "Status changed!", "success");
+          location.reload();
+        },
+        error:function(data){
+          swal("Error", "Something went error...", "error");
+        }
+      })
+    }
+
+    function statusDecline(order_id){
+      $.ajax({
+        url:'/admin/orders/statusDecline/'+order_id,
+        method:'GET',
+        success:function(data){
+          swal("Success", "Status changed!", "success");
+          location.reload();
+        },
+        error:function(data){
+          swal("Error", "Something went error...", "error");
+        }
+      })
+    }
+
+    function paymentPaid(order_id){
+      $.ajax({
+        url:'/admin/orders/paymentPaid/'+order_id,
+        method:'GET',
+        success:function(data){
+          swal("Success", "Status changed!", "success");
+          location.reload();
+        },
+        error:function(data){
+          swal("Error", "Something went error...", "error");
+        }
+      })
+    }
+
+    function paymentNoPaid(order_id){
+      $.ajax({
+        url:'/admin/orders/paymentNoPaid/'+order_id,
+        method:'GET',
+        success:function(data){
+          swal("Success", "Status changed!", "success");
+          location.reload();
+        },
+        error:function(data){
+          swal("Error", "Something went error...", "error");
+        }
+      })
     }
     </script>
   @endsection

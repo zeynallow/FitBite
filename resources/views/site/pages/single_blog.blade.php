@@ -14,6 +14,8 @@
   <main>
     <section class="block">
       <div class="container">
+        <span class="posted-date"><i class="fa fa-calendar"></i> {{$getBlog->created_at->diffForHumans()}}</span>
+        <span class="posted-views"><i class="fa fa-eye"></i>  {{$getBlog->views}}</span>
         {!! $getBlog->content !!}
       </section>
     </div>

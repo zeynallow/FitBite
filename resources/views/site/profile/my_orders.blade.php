@@ -1,3 +1,7 @@
+@php
+use Carbon\Carbon;
+@endphp
+
 @extends('site.app')
 
 @section('content')
@@ -44,13 +48,21 @@
                 <tr>
                   <td>{{$order->id}}</td>
                   <td>{{($order->getPlan) ? $order->getPlan->name : ''}}</td>
-                  <td>{{$order->start_date}}</td>
+                  <td>
+                    @php
+                    $carbonated_date = Carbon::parse($order->start_date);
+                    $start_date = $carbonated_date->diffForHumans(Carbon::now());
+                    echo $start_date;
+                    @endphp
+                  </td>
                   <td>{{$order->amount}} {{$order->currency}}</td>
                   <td>
                     @if($order->status == 1)
                       <span class="label label-warning">Pending</span>
                     @elseif($order->status == 2)
                       <span class="label label-success">Approved</span>
+                    @elseif($order->status == 3)
+                      <span class="label label-danger">Decline</span>
                     @else
                       <span class="label label-danger">Cancelled</span>
                     @endif
@@ -66,7 +78,7 @@
                 <tr>
                   <td colspan="7">
                     <div class="alert alert-info">
-                        No orders
+                      No orders
                     </div>
                   </td>
                 </tr>
@@ -111,7 +123,13 @@
                       <td>Eat time</td><td>{{$order->getData('select_eat_time',$order->select_eat_time)}}</td>
                     </tr>
                     <tr>
-                      <td>Start Date</td><td>{{$order->start_date}}</td>
+                      <td>Start Date</td><td>
+                        @php
+                        $carbonated_date = Carbon::parse($order->start_date);
+                        $start_date = $carbonated_date->diffForHumans(Carbon::now());
+                        echo $start_date;
+                        @endphp
+                      </td>
                     </tr>
                     <tr>
                       <td>Amount</td><td>{{$order->amount}} {{$order->currency}}</td>
@@ -132,15 +150,15 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>Created at</td><td>{{$order->created_at}}</td>
+                      <td>Created at</td><td>{{$order->created_at->diffForHumans()}}</td>
                     </tr>
                   </table>
 
                 </div>
                 <div class="modal-footer">
 
-                  @if($order->status != 3)
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel Plan</button>
+                  @if($order->status == 1 || $order->status == 2)
+                    <a href="/cancel-order/{{$order->id}}" class="btn btn-danger pull-left"><i class="fa fa-times"></i> Cancel Plan</a>
                   @endif
 
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

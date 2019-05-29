@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 
+
+use App\Notifications\NewOrder;
+use Illuminate\Support\Facades\Notification;
+
+use App\User;
 use App\Page;
 use App\MealPlan;
 use App\OrderPlan;
@@ -86,6 +91,7 @@ class MealPlanController extends Controller
 
   // event(new \App\Events\NewOrder($user->name));
 
+
   if($getOrder){
     return redirect()->to("/order/{$getOrder->id}");
   }else{
@@ -140,6 +146,13 @@ public function confirmOrderPlan(Request $request, $order_id){
     'status'=>1, //user confirm
     'payment_status'=>0 //no payment
   ]);
+
+
+    //Send Notification
+    $admins = User::where('role_id',1)->get();
+    foreach ($admins as $key => $admin) {
+        $admin->notify(new NewOrder());
+    }
 
   return redirect()->to('/profile/my-orders');
 }

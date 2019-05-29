@@ -30,4 +30,50 @@ class OrderController extends Controller{
     return view('admin.orders.all_orders',compact('orders'));
   }
 
+
+  /*
+  * Order Status Change
+  */
+
+  public function statusApprove($order_id){
+    $change = OrderPlan::where('id',$order_id)->update(['status'=>2]);
+
+    if($change){
+      return response()->json(['message'=>'success'],201);
+    }else{
+      return response()->json(['message'=>'error'],400);
+    }
+  }
+
+  public function statusDecline($order_id){
+    $change = OrderPlan::where('id',$order_id)->update(['status'=>3]);
+
+    if($change){
+      return response()->json(['message'=>'success'],201);
+    }else{
+      return response()->json(['message'=>'error'],400);
+    }
+  }
+
+  public function paymentPaid($order_id){
+    $change = OrderPlan::where('id',$order_id)->update(['payment_status'=>1]);
+
+    if($change){
+      return response()->json(['message'=>'success'],201);
+    }else{
+      return response()->json(['message'=>'error'],400);
+    }
+  }
+
+  public function paymentNoPaid($order_id){
+    $change = OrderPlan::where('id',$order_id)->update(['payment_status'=>0]);
+
+    if($change){
+      return response()->json(['message'=>'success'],201);
+    }else{
+      return response()->json(['message'=>'error'],400);
+    }
+  }
+
+
 }

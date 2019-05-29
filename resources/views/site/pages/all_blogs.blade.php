@@ -19,22 +19,16 @@
 
             @if($getBlogs)
               @foreach ($getBlogs as $key => $blog)
-
-                <div class="blog-listing-wrap">
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-12 wow fadeInUp blog-post">
-                      <div class="blog-post-wrap">
-                        <span class="posted-date">{{$blog->created_at}}</span>
-                        <h3><a href="/blog/{{$blog->slug}}">{{$blog->title}}</a></h3>
-                        <figure>
-                          <a href="/blog/{{$blog->slug}}">
-                            <img width="100%" src="images/blog-img1.jpg" alt="Blog image" />
-                          </a>
-                        </figure>
-                        <p>{!! $blog->content !!}</p>
-                        <a href="/blog/{{$blog->slug}}" class="text-capitalize pull-right read-more-btn">read more</a>
-                      </div>
-                    </div>
+                <div class="col-xs-6 col-sm-6 wow fadeInUp blog-post">
+                  <div class="blog-post-wrap">
+                    <figure>
+                      <a href="/blog/{{$blog->slug}}">
+                        <img class="blog-img" width="100%" src="{{$blog->cover}}" alt="{{str_limit($blog->title,70)}}" />
+                      </a>
+                    </figure>
+                      <span class="posted-date"><i class="fa fa-calendar"></i> {{$blog->created_at->diffForHumans()}}</span>
+                      <span class="posted-views"><i class="fa fa-eye"></i>  {{$blog->views}}</span>
+                      <h3><a href="/blog/{{$blog->slug}}">{{str_limit($blog->title,70)}}</a></h3>
                   </div>
                 </div>
               @endforeach
@@ -50,34 +44,30 @@
           <div class="col-xs-12 col-sm-4 col-md-3 blog-right-sidebar">
             <div class="sidebar-wrap">
 
-              <!-- == search block starts == -->
-              <div class="search-section">
+              {{-- <div class="search-section">
                 <form>
                   <fieldset><input type="text" /></fieldset>
                 </form>
-              </div>
-              <!-- == search block ends == -->
+              </div> --}}
 
               <!-- == popular posts block starts == -->
               <div class="sidebar-widget popular-posts">
                 <h6 class="text-uppercase">POPULAR POSTS</h6>
                 <ul>
-                  <li>
-                    <figure><a href="#"><img class="img-responsive" src="images/image-small1.jpg" alt="Post image" /></a></figure>
-                    <h6><a href="#">Getting Saucy: Pineapple Salsa</a></h6>
-                  </li>
-                  <li>
-                    <figure><a href="#"><img class="img-responsive" src="images/image-small2.jpg" alt="Post image" /></a></figure>
-                    <h6><a href="#">6 Tips to Make Paleo Eating Easy</a></h6>
-                  </li>
-                  <li>
-                    <figure><a href="#"><img class="img-responsive" src="images/image-small3.jpg" alt="Post image" /></a></figure>
-                    <h6><a href="#">5 Simple &amp; Healthy Gluten Free Cookies</a></h6>
-                  </li>
-                  <li>
-                    <figure><a href="#"><img class="img-responsive" src="images/image-small4.jpg" alt="Post image" /></a></figure>
-                    <h6><a href="#">#CookingwithMadang Weekly Harvest</a></h6>
-                  </li>
+                  @if($getPopularBlogs)
+                    @foreach ($getPopularBlogs as $key => $blog)
+                      <li>
+                        <div class="row">
+                        <div class="col-md-4">
+                          <a href="/blog/{{$blog->slug}}"><img class="img-responsive" src="{{$blog->cover}}" alt="Post image" /></a></figure>
+                        </div>
+                        <div class="col-md-8">
+                          <h6><a href="/blog/{{$blog->slug}}">{{str_limit($blog->title,50)}}</a></h6>
+                        </div>
+                        </div>
+                      </li>
+                    @endforeach
+                  @endif
                 </ul>
               </div>
               <!-- == popular posts block ends == -->

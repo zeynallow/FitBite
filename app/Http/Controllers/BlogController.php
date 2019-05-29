@@ -13,9 +13,10 @@ class BlogController extends Controller
   */
   public function index(){
 
-    $getBlogs = Blog::paginate(2);
+    $getBlogs = Blog::paginate(6);
+    $getPopularBlogs = Blog::orderBy('views','desc')->limit(10)->get();
 
-    return view('site.pages.all_blogs',compact('getBlogs'));
+    return view('site.pages.all_blogs',compact('getBlogs','getPopularBlogs'));
   }
 
   /*
@@ -24,7 +25,9 @@ class BlogController extends Controller
 
   public function getBlog($blog_slug){
 
-    $getBlog = Blog::where('slug',$blog_slug)->firstOrFail();
+    $_getBlog = Blog::where('slug',$blog_slug);
+    $_getBlog->increment('views');
+    $getBlog = $_getBlog->firstOrFail();
 
     return view('site.pages.single_blog',compact('getBlog'));
   }
